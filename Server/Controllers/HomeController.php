@@ -16,4 +16,16 @@ class HomeController extends Controller
     {
         return $this->view($res, 'Home');
     }
+
+    /**
+     * @param \Slim\Http\Request  $req
+     * @param \Slim\Http\Response $res
+     * @param array               $args
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function temp($req, $res, $args)
+    {
+        return $this->view($res, 'Link');
+    }
 }

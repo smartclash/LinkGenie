@@ -6,6 +6,7 @@ use Server\Controllers\Auth\RegisterController;
 use Server\Controllers\Auth\VerificationController;
 
 $app->get('/', HomeController::class . ':show');
+$app->get('/link', HomeController::class . ':temp');
 
 $app->group('/auth', function ($app) {
     $this->get('/login', LoginController::class . ':show');
