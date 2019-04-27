@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ReMe.To</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.3.1/dist/sketchy/bootstrap.min.css">
+        <style>
+            .form-control {
+                padding: 1.4rem 0.75rem;
+            }
+
+            .white {
+                color: #fff;
+            }
+
+            .navbar {
+                border-width: 0 !important;
+                border-style: none !important;
+                border-radius: 0 !important;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="#">ReMe.To</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="nav-item pull-right">
+                            <a class="nav-link" href="#">Report</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container" style="padding-top: 45px;">
+            <div class="jumbotron">
+                <div class="display-4 text-center mb-3">Redirect, Anonymously</div>
+                <p class="lead text-center">Create anonymous links, share it and hide the HTTP referrers. No trackers, no logs</p>
+                <form action="">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                            <input class="form-control input-lg mt-2" placeholder="Paste a link to shorten it" name="url" type="text">
+                        </div>
+                        <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                            <input class="btn btn-lg btn-primary btn-block mt-2" type="submit" value="Shorten">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="jumbotron mt-5">
+                <div class="display-4 text-center mb-3">What's this?</div>
+                <p class="lead text-center">
+                    Anonymously link to other web sites without sending any referrer by using <b>ReMe.To</b>.
+                    Use <b>ReMe.To</b> to de-referer or null-referer your links. There are no trackers, logs tracking you around.
+                </p>
+            </div>
+        </div>
+
+        <div style="background: #333 !important" class="pb-5 pt-1">
+            <footer class="mt-5">
+                <div class="footer-top">
+                    <div class="container footer-top">
+                        <div class="row">
+                            <div class="col-md-6 footer-col text-center">
+                                <p class="navbar-brand white">Copyright © ReMe.To</p>
+                                <ul class="list-inline">
+                                    <li><a href="https://reme.to/about" title="About" class="white">About</a></li>
+                                    <li><a href="https://reme.to/about/terms" title="Terms of Service" class="white">Terms</a></li>
+                                    <li><a href="https://reme.to/about/privacy-policy" title="Privacy Policy" class="white">Privacy</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 footer-col text-center">
+                                <h4 class="white">
+                                    About ReMe.To
+                                </h4>
+                                <p class="white">ReMe.To is a free to use, Anonymous URL Shortener and Redirect service</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
