@@ -10,10 +10,11 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @package Server\Controllers
  *
- * @property \Medoo\Medoo                   $db   returns Medoo ORM instance
- * @property \PHPMailer\PHPMailer\PHPMailer $mail returns PHPMailer instance
- * @property \Delight\Auth\Auth             $auth returns Delight Auth instance
- * @property \Slim\Views\Twig               $view returns Twig view instance
+ * @property \Medoo\Medoo                   $db    returns Medoo ORM instance
+ * @property \PHPMailer\PHPMailer\PHPMailer $mail  returns PHPMailer instance
+ * @property \Delight\Auth\Auth             $auth  returns Delight Auth instance
+ * @property \Slim\Views\Twig               $view  returns Twig view instance
+ * @property \Predis\Client                 $redis returns Predis instance
  */
 class Controller
 {

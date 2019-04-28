@@ -13,6 +13,18 @@ $container['view'] = function ($c) {
     return $view;
 };
 
+$container['redis'] = function ($c) {
+    return new Predis\Client([
+        'scheme' => 'tcp',
+        'host' => getenv('REDIS_HOST'),
+        'port' => getenv('REDIS_PORT')
+    ], [
+        'parameters' => [
+            'password' => getenv('REDIS_PASS')
+        ]
+    ]);
+};
+
 $container['mail'] = function ($c) {
     $mail = new PHPMailer(false);
 
