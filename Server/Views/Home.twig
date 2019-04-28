@@ -6,6 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>LinkGenie.Me</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.3.1/dist/sketchy/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
         <style>
             .form-control {
                 padding: 1.4rem 0.75rem;
@@ -19,6 +22,14 @@
                 border-width: 0 !important;
                 border-style: none !important;
                 border-radius: 0 !important;
+            }
+
+            .red {
+                color: red;
+            }
+
+            .no-display {
+                display: none;
             }
         </style>
     </head>
@@ -49,16 +60,17 @@
             <div class="jumbotron">
                 <div class="display-4 text-center mb-3">Redirect, Anonymously</div>
                 <p class="lead text-center">Create anonymous links, share it and hide the HTTP referrers. No trackers, no logs</p>
-                <form action="">
+                <form action="/link/new" method="post" id="linkCreate">
                     <div class="row">
                         <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
-                            <input class="form-control input-lg mt-2" placeholder="Paste a link to shorten it" name="url" type="text">
+                            <input id="link" class="form-control input-lg mt-2" placeholder="Paste a link to shorten it" name="url" type="url">
                         </div>
                         <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
                             <input class="btn btn-lg btn-primary btn-block mt-2" type="submit" value="Shorten">
                         </div>
                     </div>
                 </form>
+                <p class="lead red no-display mt-4 text-center" id="error"></p>
             </div>
             <div class="jumbotron mt-5">
                 <div class="display-4 text-center mb-3">What's this?</div>
@@ -69,7 +81,7 @@
             </div>
         </div>
 
-        <div style="background: #333 !important" class="pb-5 pt-1">
+        <div style="background: #333 !important" class="pb-5 pt-1 mt-5">
             <footer class="mt-5">
                 <div class="footer-top">
                     <div class="container footer-top">
@@ -93,5 +105,30 @@
                 </div>
             </footer>
         </div>
+        <script>
+            $(document).ready(function(){
+                $('#linkCreate').submit(function (e) {
+                    e.preventDefault();
+
+                    if ($('#link').val().length === 0) {
+                        document.getElementById('error').innerText = 'You have not entered the URL';
+                        $('#error').removeClass('no-display');
+                    }
+
+                    $.ajax({
+                        method: 'POST',
+                        url: window.location.href + 'link/new',
+                        data: $('#linkCreate').serialize(),
+                        success: function (data) {
+                            document.getElementById('error').innerText = 'Your link has been created. See it at https://linkgenie.me/' + data.code;
+                            $('#error').removeClass('no-display');
+                        },
+                        error: function(err) {
+                            console.log(err)
+                        }
+                    })
+                });
+            });
+        </script>
     </body>
 </html>

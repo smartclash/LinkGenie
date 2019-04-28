@@ -10,6 +10,7 @@ $dotenv->load();
 $app = new App([
     'settings' => [
         'displayErrorDetails' => getenv('ENVIRONMENT') == 'development' ? true : false,
+        'determineRouteBeforeAppMiddleware' => true,
     ],
 ]);
 

@@ -1,7 +1,5 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-
 $container = $app->getContainer();
 
 $container['view'] = function ($c) {
@@ -25,22 +23,6 @@ $container['redis'] = function ($c) {
     ]);
 };
 
-$container['mail'] = function ($c) {
-    $mail = new PHPMailer(false);
-
-    $mail->isSMTP();
-    $mail->Host = getenv('MAIL_HOST');
-    $mail->SMTPAuth = true;
-    $mail->Username = getenv('MAIL_USER');
-    $mail->Password = getenv('MAIL_PASS');
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = (int) getenv('MAIL_PORT');
-
-    $mail->setFrom(getenv('MAIL_FROM'));
-
-    return $mail;
-};
-
 $container['db'] = function($c) {
     return new \Medoo\Medoo([
         'database_type' => getenv('DB_TYPE'),
@@ -52,16 +34,6 @@ $container['db'] = function($c) {
     ]);
 };
 
-$container['auth'] = function($c) use ($container) {
-    return new \Delight\Auth\Auth(
-        $container->get('db')->pdo
-    );
-};
-
-$container['GuestOnlyMiddleware'] = function ($c) {
-    return new \Server\Middlewares\GuestOnly($c);
-};
-
-$container['UserOnlyMiddleware'] = function ($c) {
-    return new \Server\Middlewares\UserOnly($c);
+$container['CheckCacheMiddleware'] = function($c) {
+    return new \Server\Middlewares\CheckCache($c);
 };
