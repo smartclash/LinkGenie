@@ -12,18 +12,6 @@ class LinkController extends Controller
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function show($req, $res, $args)
-    {
-        return $this->view($res, 'Link');
-    }
-
-    /**
-     * @param \Slim\Http\Request  $req
-     * @param \Slim\Http\Response $res
-     * @param array               $args
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
     public function newLink($req, $res, $args)
     {
         if (! $req->getParsedBody()['url']) {
@@ -54,7 +42,11 @@ class LinkController extends Controller
     public function getLink($req, $res, $args)
     {
         if ($this->redis->get($args['code'])) {
-            return $this->view($res, 'Link', [
+            if ($this->redis->get($args['code']) === 'deleted') {
+                return $this->view($res, 'Links/Deleted');
+            }
+
+            return $this->view($res, 'Links/Link', [
                 'url' => $this->redis->get($args['code'])
             ]);
         }
@@ -64,17 +56,25 @@ class LinkController extends Controller
             'deleted'
         ], [
             'code' => $args['code']
-        ])[0];
+        ]);
 
-        if (! $data['deleted']) {
-            $this->redis->set($args['code'], $data['url']);
+        // If there exists a link with that code...
+        if ($data) {
+            // ...And the code is not deleted, then...
+            if (! $data[0]['deleted']) {
+                $this->redis->set($args['code'], $data[0]['url']);
 
-            return $this->view($res, 'Link', [
-                'url' => $data['url']
-            ]);
+                return $this->view($res, 'Links/Link', [
+                    'url' => $data[0]['url']
+                ]);
+            }
+
+            $this->redis->set($args['code'], 'deleted');
+
+            return $this->view($res, 'Links/Deleted');
         }
 
-        // TODO: Design a "link deleted" page to notify users.
-        return $res;
+        // TODO: Design a "Link not found" page to notify users.
+        return $this->view($res, 'Unknown')->withStatus(404);
     }
 }

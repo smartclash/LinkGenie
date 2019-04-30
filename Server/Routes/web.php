@@ -3,9 +3,11 @@
 use Server\Controllers\LinkController;
 use Server\Controllers\HomeController;
 
-$app->get('/', HomeController::class . ':show');
-$app->get('/link', LinkController::class . ':show');
+$app->get('/', HomeController::class . ':show')
+    ->setName('home');
 
-$app->post('/link/new', LinkController::class . ':newLink');
+$app->post('/link/new', LinkController::class . ':newLink')
+    ->setName('link.new');
 
-$app->get('/{code}', LinkController::class . ':getLink');
+$app->get('/{code}', LinkController::class . ':getLink')
+    ->setName('link.show');
