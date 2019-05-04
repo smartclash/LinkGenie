@@ -33,7 +33,3 @@ $container['db'] = function($c) {
         'charset'       => 'utf8',
     ]);
 };
-
-$container['CheckCacheMiddleware'] = function($c) {
-    return new \Server\Middlewares\CheckCache($c);
-};
