@@ -74,7 +74,20 @@ class LinkController extends Controller
             return $this->view($res, 'Links/Deleted');
         }
 
-        // TODO: Design a "Link not found" page to notify users.
         return $this->view($res, 'Unknown')->withStatus(404);
+    }
+
+    /**
+     * @param \Slim\Http\Request  $req
+     * @param \Slim\Http\Response $res
+     * @param array               $args
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function getLinkS2U($req, $res, $args)
+    {
+        return $this->view($res, 'Links/Link', [
+            'url' => 'https://sub2unlock.com/' . $args['code']
+        ]);
     }
 }
