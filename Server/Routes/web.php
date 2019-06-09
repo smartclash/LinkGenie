@@ -13,6 +13,3 @@ $app->get('/s/{code}', LinkController::class . ':getLinkS2U')
     ->setName('link.show.s2u');
 $app->get('/{code}', LinkController::class . ':getLink')
     ->setName('link.show');
-$app->get('/.env', function ($req, $res, $args) {
-    return $res;
-});

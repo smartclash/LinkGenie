@@ -58,17 +58,17 @@
                     <br>
                     You can also create anonymous links, share it and hide the HTTP referrers. No trackers, no logs
                 </p>
-                <a class="btn btn-lg btn-primary btn-block mt-4" rel="noreferrer nofollow" href="{{ base_url() }}">Go Home</a>
+                <a class="btn btn-lg btn-error btn-block mt-4" rel="noreferrer nofollow" href="{{ base_url() }}">Go Home</a>
             </div>
         </div>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76794494-6"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ gacode }}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'UA-76794494-6');
+            gtag('config', '{{ gacode }}');
         </script>
     </body>
 </html>
