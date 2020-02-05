@@ -14,6 +14,8 @@ $container['view'] = function ($c) {
 
     $view->getEnvironment()->addGlobal('gacode', getenv('GOOGLE_ANALYTICS_ID'));
     $view->getEnvironment()->addGlobal('adcode', getenv('GOOGLE_ADSENSE_ID'));
+    $view->getEnvironment()->addGlobal('host', getenv('APP_HOST'));
+    $view->getEnvironment()->addGlobal('name', getenv('APP_NAME'));
 
     return $view;
 };

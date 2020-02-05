@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>LinkGenie.Me</title>
+        <title>{{ name }}</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.3.1/dist/sketchy/bootstrap.min.css">
         <style>
             .form-control {
@@ -26,7 +26,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="{{ path_for('home') }}">LinkGenie.Me</a>
+                <a class="navbar-brand" href="{{ path_for('home') }}">{{ name }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -49,24 +49,24 @@
         <div class="container mt-5">
             <div class="jumbotron">
                 <div class="display-4 text-center mb-3">
-                    LinkGenie.Me, anonymous, simple.
+                    {{ name }}, anonymous, simple.
                 </div>
                 <p class="lead text-center">
                     Click on the button and you will be redirected to your destination, anonymously.
                     <br>
                     You can create anonymous links, share it and hide the HTTP referrers. No trackers, no logs
                 </p>
-                <a class="btn btn-lg btn-success btn-block mt-4" rel="noreferrer nofollow" href="{{ url }}">Take me</a>
+                <a class="btn btn-lg btn-success btn-block mt-4" rel="noreferrer nofollow" href="{{ host }}">Take me</a>
             </div>
         </div>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76794494-6"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ gacode }}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'UA-76794494-6');
+            gtag('config', '{{ gacode }}');
         </script>
     </body>
 </html>
