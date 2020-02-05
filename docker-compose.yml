@@ -1,0 +1,16 @@
+version: 3.7
+
+services:
+  nginx:
+    image: nginx:alpine
+    depends_on:
+      - mysql
+      - redis
+
+  redis:
+    image: redis:alpine
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mariadb:latest

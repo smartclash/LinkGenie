@@ -13,9 +13,9 @@ class HomeController extends Controller
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function show($req, $res, $args)
-    {
-        return $this->view($res, 'Home');
-    }
+{
+    return $this->view($res, 'Home');
+}
 
     /**
      * @param \Slim\Http\Request  $req
